@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial'])
+angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-storage'])
     .config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
 
@@ -36,8 +36,14 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial'])
                     }
                 });
         }])
-    .controller('DashboardBaseController', ['$scope', '$state',
-        function ($scope, $state) {
+    .controller('DashboardBaseController', ['$scope', '$state', 'store',
+        function ($scope, $state, store) {
+
+            $scope.logout = function () {
+                store.remove('currentUser');
+                $state.go('/');
+            };
+
             $state.go('departments');
         }
     ]);

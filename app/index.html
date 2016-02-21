@@ -86,13 +86,13 @@
                 </button>
                 <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" data-mdl-for="menu-lower-left">
                     <li class="mdl-menu__item">
-                        <a ng-click="redirectToDashboard()">Log in as CEO</a>
+                        <a ng-click="redirectToDashboard('0')">Log in as CEO</a>
                     </li>
                     <li class="mdl-menu__item">
-                        <a ng-click="redirectToDashboard()">Log in as PM</a>
+                        <a ng-click="redirectToDashboard('1')">Log in as PM</a>
                     </li>
                     <li class="mdl-menu__item">
-                        <a ng-click="redirectToDashboard()">Log in as Employee</a>
+                        <a ng-click="redirectToDashboard('2')">Log in as Employee</a>
                     </li>
                 </ul>
             </div>
@@ -168,7 +168,9 @@
         </div>
     </div>
 </div>
+<script src="bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
 <script src="app.js"></script>
 <script src="parentController.js"></script>
+<script src="usersService.js"></script>
 </body>
 </html>

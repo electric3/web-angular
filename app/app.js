@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', []);
+angular.module('myApp', ['angular-storage']);
 /*
 myApp.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {

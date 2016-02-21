@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ProjectsController', ['$scope', '$state', "$http",
-        function ($scope, $state, $http) {
+    .controller('ProjectsController', ['$scope', '$state', "$http", 'UsersService',
+        function ($scope, $state, $http, UsersService) {
 
             $scope.title = "Projects";
             $scope.listItems = [{title: '1'}];
+
+            var currentUser = UsersService.getCurrentUser();
 
             $http({
                 method: 'GET',

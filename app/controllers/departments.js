@@ -1,14 +1,16 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window', "$http",
-        function ($scope, $window, $http) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http", 'UsersService',
+        function ($scope, $window, $http, UsersService) {
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
 
+            var currentUser = UsersService.getCurrentUser();
+
             $http({
                 method: 'GET',
-                url: 'http://169.45.106.72:8080/server/webapi/clients/' + '56c9ad7bc4fa907ce389a46d' + '/departments'
+                url: 'http://169.45.106.72:8080/server/webapi/clients/' + currentUser.user_metadata.clientId + '/departments'
             }).then(function successCallback(response) {
 
                 var departments = angular.fromJson(response.data).items;
@@ -25,16 +27,14 @@ angular.module('myApp')
                             "label": "Department",
                             "type": "number",
                             "p": {}
-                        },
+                        }
                     ],
                     "rows": []
                 };
                 var slices = { };
                 var i = 0;
                 angular.forEach(departments, function (key) {
-<<<<<<< HEAD
-                    data.rows.push({"c": [{"v": key.title, "myVal": key._id}, {"v": 1}]});
-=======
+
                     data.rows.push({"c": [{"v": key.title, "department_id": key._id}, {"v": 1, "department_id": key._id}]});
                     if( "0" == key.status ) {
                         slices[i++] = { "color": "red" };
@@ -43,8 +43,6 @@ angular.module('myApp')
                     } else if( "2" == key.status ) {
                         slices[i++] = { "color": "green" };
                     }
-
->>>>>>> origin/master
                 });
 
                 console.log("after", data);
