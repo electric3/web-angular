@@ -11,8 +11,6 @@ angular.module('myApp')
                 url: 'http://169.45.106.72:8080/server/webapi/clients/' + '56c9ad7bc4fa907ce389a46d' + '/departments'
             }).then(function successCallback(response) {
 
-                console.log("before", $scope.chartObject);
-
                 var departments = angular.fromJson(response.data).items;
                 var data = {
                     "cols": [
@@ -49,7 +47,7 @@ angular.module('myApp')
                     "rows": []
                 };
                 angular.forEach(departments, function (key) {
-                    data.rows.push({"c": [{"v": key.title}, {"v": 1}]});
+                    data.rows.push({"c": [{"v": key.title, "myVal": key._id}, {"v": 1}]});
                 });
 
                 console.log("after", data);
@@ -80,8 +78,8 @@ angular.module('myApp')
             });
 
             $scope.selectHandler = function (selectedItem) {
+                //console.log(selectedItem.C.Gf[0].c[0].myVal);
                 console.log(selectedItem);
-                fillByDepartments("56c9ad7bc4fa907ce389a46d");
             }
         }
     ]);

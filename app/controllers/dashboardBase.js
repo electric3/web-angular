@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['googlechart', 'ui.router'])
+angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial'])
     .config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
 
