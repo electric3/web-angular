@@ -36,12 +36,12 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     }
                 });
         }])
-    .controller('DashboardBaseController', ['$scope', '$state', 'store',
-        function ($scope, $state, store) {
+    .controller('DashboardBaseController', ['$scope', '$state', 'store', '$window',
+        function ($scope, $state, store, $window) {
 
             $scope.logout = function () {
                 store.remove('currentUser');
-                $state.go('/');
+                $window.location.href = $window.location.origin;
             };
 
             $state.go('departments');
