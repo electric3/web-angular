@@ -6,6 +6,7 @@
 <!--[if IE 8]>
 <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <style>
         .pt-landing_cards-wrapper {
             display: flex;
@@ -35,25 +37,10 @@
             flex: 1 100%;
             background: white;
         }
-
-        .pt-landing_footer {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: stretch;
-            justify-content: center;
-            padding: 3em;
-            flex: 1 100%;
-            height: 100%;
-            background: white;
-        }
     </style>
 </head>
 
-<body>
+<body ng-controller="ParentController">
 <div class="mdl-layout mdl-js-layout"
      style="background: url('http://imagizer.imageshack.us/a/img922/9340/GCN36q.jpg') no-repeat center / cover">
     <header class="mdl-layout__header mdl-layout__header--transparent" style="color: white">
@@ -66,9 +53,15 @@
                     IN
                 </button>
                 <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" data-mdl-for="menu-lower-left">
-                    <li class="mdl-menu__item">Log in as CEO</li>
-                    <li class="mdl-menu__item">Log in as PM</li>
-                    <li class="mdl-menu__item">Log in as Employee</li>
+                    <li class="mdl-menu__item">
+                        <a ng-click="redirectToDashboard()">Log in as CEO</a>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a ng-click="redirectToDashboard()">Log in as PM</a>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a ng-click="redirectToDashboard()">Log in as Employee</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -108,5 +101,7 @@
         </div>
     </div>
 </div>
+<script src="app.js"></script>
+<script src="parentController.js"></script>
 </body>
 </html>
