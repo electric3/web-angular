@@ -26,28 +26,25 @@ angular.module('myApp')
                             "type": "number",
                             "p": {}
                         },
-                        {
-                            "id": "desktop-id",
-                            "label": "Desktop",
-                            "type": "number",
-                            "p": {}
-                        },
-                        {
-                            "id": "server-id",
-                            "label": "Server",
-                            "type": "number",
-                            "p": {}
-                        },
-                        {
-                            "id": "cost-id",
-                            "label": "Shipping",
-                            "type": "number"
-                        }
                     ],
                     "rows": []
                 };
+                var slices = { };
+                var i = 0;
                 angular.forEach(departments, function (key) {
+<<<<<<< HEAD
                     data.rows.push({"c": [{"v": key.title, "myVal": key._id}, {"v": 1}]});
+=======
+                    data.rows.push({"c": [{"v": key.title, "department_id": key._id}, {"v": 1, "department_id": key._id}]});
+                    if( "0" == key.status ) {
+                        slices[i++] = { "color": "red" };
+                    } else if( "1" == key.status ) {
+                        slices[i++] = { "color": "orange" };
+                    } else if( "2" == key.status ) {
+                        slices[i++] = { "color": "green" };
+                    }
+
+>>>>>>> origin/master
                 });
 
                 console.log("after", data);
@@ -64,11 +61,7 @@ angular.module('myApp')
                             "isHtml": false,
                             "trigger": "none"
                         },
-                        "slices": {
-                            0: {"color": "yellow"},
-                            1: {"color": "yellow"},
-                            2: {"color": "yellow"},
-                        }
+                        "slices": slices,
                     },
                     "formatters": {}
                 };
