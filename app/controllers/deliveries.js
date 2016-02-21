@@ -35,7 +35,7 @@ angular.module('myApp')
                 var slices = { };
                 var i = 0;
                 angular.forEach(departments, function (key) {
-                    data.rows.push({"c": [{"v": key.title, "delivery_id": key._id}, {"v": 1, "delivery_id": key._id}]});
+                    data.rows.push({"c": [{"v": key.title, "delivery_id": key}, {"v": 1, "delivery_id": key}]});
                     if( "0" == key.status ) {
                         slices[i++] = { "color": "red" };
                     } else if( "1" == key.status ) {
