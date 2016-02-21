@@ -1,17 +1,15 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('ProjectsController', ['$scope', '$state', "$http", 'UsersService',
-        function ($scope, $state, $http, UsersService) {
+    .controller('ProjectsController', ['$scope', '$state', "$http", '$stateParams',
+        function ($scope, $state, $http, $stateParams) {
 
             $scope.title = "Projects";
             $scope.listItems = [{title: '1'}];
 
-            var currentUser = UsersService.getCurrentUser();
-
             $http({
                 method: 'GET',
-                url: 'http://169.45.106.72:8080/server/webapi/departments/' + '56c9ad88c4fa907ce389a46e' + '/projects'
+                url: 'http://169.45.106.72:8080/server/webapi/departments/' + $stateParams.departmentId + '/projects'
             }).then(function successCallback(response) {
 
                 console.log("before", $scope.chartObject);
@@ -73,7 +71,7 @@ angular.module('myApp')
 
             $http({
                 method: "GET",
-                url: "http://169.45.106.72:8080/server/webapi/actions/department/" + currentUser.user_metadata.clientId
+                url: "http://169.45.106.72:8080/server/webapi/actions/department/" + $stateParams.departmentId
             }).then(function successCallback(response) {
                 var feed = angular.fromJson(response.data).items;
                 console.log("xyi feed ", feed);
@@ -84,8 +82,9 @@ angular.module('myApp')
 
             $scope.selectHandler = function (selectedItem) {
                 var selectedRow = selectedItem.row;
-                var departmentId = $scope.chartObject.data.rows[selectedRow].c[0].project_id;
-                console.log("selected project_id", departmentId);
+                var projectId = $scope.chartObject.data.rows[selectedRow].c[0].project_id;
+                console.log("selected project_id", projectId);
+                $state.go('deliveries', { 'projectId': projectId });
             }
         }
     ]);

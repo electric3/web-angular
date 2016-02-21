@@ -12,6 +12,9 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     controller: 'DepartmentsController',
                     templateUrl: function () {
                         return 'dashboard.html';
+                    },
+                    params: {
+                        'clientId': undefined
                     }
                 })
                 .state('deliveries', {
@@ -19,6 +22,9 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     controller: 'DeliveriesController',
                     templateUrl: function () {
                         return 'dashboard.html';
+                    },
+                    params: {
+                        'projectId': undefined
                     }
                 })
                 .state('deliveryDetails', {
@@ -33,17 +39,22 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     controller: 'ProjectsController',
                     templateUrl: function () {
                         return 'dashboard.html';
+                    },
+                    params: {
+                        'departmentId': undefined
                     }
                 });
         }])
-    .controller('DashboardBaseController', ['$scope', '$state', 'store', '$window',
-        function ($scope, $state, store, $window) {
+    .controller('DashboardBaseController', ['$scope', '$state', 'store', '$window', 'UsersService',
+        function ($scope, $state, store, $window, UsersService) {
 
             $scope.logout = function () {
                 store.remove('currentUser');
                 $window.location.href = $window.location.origin;
             };
 
-            $state.go('departments');
+            var currentUser = UsersService.getCurrentUser();
+
+            $state.go('departments', { 'clientId': currentUser.user_metadata.clientId });
         }
     ]);

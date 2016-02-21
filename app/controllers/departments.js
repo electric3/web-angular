@@ -1,7 +1,7 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window', "$http", 'UsersService',
-        function ($scope, $window, $http, UsersService) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http", 'UsersService', '$state',
+        function ($scope, $window, $http, UsersService, $state) {
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
@@ -83,6 +83,7 @@ angular.module('myApp')
                 var selectedRow = selectedItem.row;
                 var departmentId = $scope.chartObject.data.rows[selectedRow].c[0].department_id;
                 console.log("selected", departmentId);
+                $state.go('projects', { 'departmentId': departmentId });
             }
         }
     ]);
