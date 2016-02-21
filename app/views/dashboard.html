@@ -6,8 +6,7 @@
                      agc-on-select="selectHandler(selectedItems)"></div>
             </div>
             <div class="mdl-card__supporting-text">
-                <h2 class="mdl-card__title-text" style="position: absolute; bottom: 0;">Department 'Sales'
-                    Statistics</h2>
+                <h2 class="mdl-card__title-text" style="position: absolute; bottom: 0;">{{title}} Statistics</h2>
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto">
@@ -92,4 +91,26 @@
             </div>
         </div>
     </div>
+</div>
+<div class="mdl-layout__content">
+    <ul class="mdl-list" style="width: 100%">
+        <li class="mdl-list__item mdl-list__item--three-line pt-dashboard_progress-wrapper"
+            ng-repeat="listItem in listItems">
+            <span class="mdl-list__item-primary-content">
+                <span>{{listItem.title}}</span>
+                <span class="mdl-list__item-text-body">
+                    details
+                </span>
+            </span>
+
+            <div id="progressbar1" class="mdl-progress mdl-js-progress pt-dashboard_progress"></div>
+            <span class="mdl-list__item-secondary-content">
+                <span class="mdl-list__item-secondary-action">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction">
+                        Add
+                    </button>
+                </span>
+            </span>
+        </li>
+    </ul>
 </div>

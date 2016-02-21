@@ -2,6 +2,10 @@
 angular.module('myApp')
     .controller('DepartmentsController', ['$scope', '$window',
         function ($scope) {
+            $scope.title = "Departments";
+
+            $scope.listItems = [{title: '2'}];
+
             $scope.chartObject = {
                 "type": "PieChart",
                 "displayed": false,
