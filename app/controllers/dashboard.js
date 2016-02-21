@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myApp', ['googlechart'])
+angular.module('myApp')
     .controller('DashboardController', ['$scope', '$window',
         function ($scope) {
             $scope.chartObject = {
