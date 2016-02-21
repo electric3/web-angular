@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('DeliveryDetailsController', ['$scope', '$state', '$stateParams',
-        function ($scope, $stateParams) {
+    .controller('DeliveryDetailsController', ['$scope', '$http', '$stateParams',
+        function ($scope, $http, $stateParams) {
+            console.log("xyi details", $stateParams.delivery);
 
             $scope.delivery = $stateParams.delivery;
 

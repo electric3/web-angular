@@ -35,7 +35,7 @@ angular.module('myApp')
                 var slices = { };
                 var i = 0;
                 angular.forEach(departments, function (key) {
-                    data.rows.push({"c": [{"v": key.title, "delivery_id": key}, {"v": 1, "delivery_id": key}]});
+                    data.rows.push({"c": [{"v": key.title, "delivery": key}, {"v": 1, "delivery": key}]});
                     if( "0" == key.status ) {
                         slices[i++] = { "color": "red" };
                     } else if( "1" == key.status ) {
@@ -82,9 +82,10 @@ angular.module('myApp')
 
             $scope.selectHandler = function (selectedItem) {
                 var selectedRow = selectedItem.row;
-                var delivery_id = $scope.chartObject.data.rows[selectedRow].c[0].delivery_id;
-                console.log("selected delivery_id", delivery_id);
-                $state.go('deliveryDetails', { 'deliveryId': delivery_id });
+                var delivery = $scope.chartObject.data.rows[selectedRow].c[0].delivery;
+                console.log("selected delivery ", delivery);
+                $state.go('deliveryDetails', { 'delivery': delivery });
+                $state.go('projects', { 'departmentId': departmentId });
             }
 
             $scope.listBtnClicked = function () {
