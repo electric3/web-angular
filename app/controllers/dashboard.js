@@ -105,7 +105,6 @@ angular.module('myApp', ['googlechart'])
                     ]
                 },
                 "options": {
-                    "title": "Sales per month",
                     "isStacked": "true",
                     "fill": 20,
                     "displayExactValues": true,
@@ -123,7 +122,7 @@ angular.module('myApp', ['googlechart'])
                     }
                 },
                 "formatters": {}
-            }
+            };
 
             $scope.selectHandler = function (selectedItem) {
                 console.log(selectedItem);
