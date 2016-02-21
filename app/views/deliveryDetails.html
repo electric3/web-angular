@@ -2,23 +2,17 @@
     <div class="pt-landing_cards-wrapper">
         <div class="mdl-card mdl-shadow--3dp" style="width: 670px; height: 450px; margin: auto">
             <div class="mdl-card__title">
-                <div google-chart chart="chartObject" style="height:600px; width:100%;"
-                     agc-on-select="selectHandler(selectedItems)"></div>
+
+                Form with fields
+
             </div>
             <div class="mdl-card__supporting-text">
-                <h2 class="mdl-card__title-text" style="position: absolute; bottom: 0;">{{title}} Statistics</h2>
+                asdasdd
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto">
             <div class="mdl-card__title">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--10-col">
-                        <h2 class="mdl-card__title-text">Feed</h2>
-                    </div>
-                    <div class="mdl-cell mdl-cell--2-col" style="margin-bottom: 20px">
-                        <img src="../assets/images/news.png" width="40px" height="40px">
-                    </div>
-                </div>
+                Comments
             </div>
             <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: scroll">
                 <ul class="mdl-list">
@@ -89,28 +83,16 @@
                     </li>
                 </ul>
             </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <div class="mdl-grid" style="">
+                    <div class="mdl-cell mdl-cell--10-col">
+                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;" placeholder="Comment"></textarea>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col">
+                        <button class="mdl-button mdl-js-button">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="mdl-layout__content">
-    <ul class="mdl-list" style="width: 100%">
-        <li class="mdl-list__item mdl-list__item--three-line pt-dashboard_progress-wrapper"
-            ng-repeat="listItem in listItems">
-            <span class="mdl-list__item-primary-content">
-                <span>{{listItem.title}}</span>
-                <span class="mdl-list__item-text-body">
-                    details
-                </span>
-            </span>
-
-            <div id="progressbar1" class="mdl-progress mdl-js-progress pt-dashboard_progress"></div>
-            <span class="mdl-list__item-secondary-content">
-                <span class="mdl-list__item-secondary-action">
-                    <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction" ng-click="listBtnClicked()">
-                        Add
-                    </button>
-                </span>
-            </span>
-        </li>
-    </ul>
 </div>

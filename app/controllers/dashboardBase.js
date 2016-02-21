@@ -21,6 +21,13 @@ angular.module('myApp', ['googlechart', 'ui.router'])
                         return 'dashboard.html';
                     }
                 })
+                .state('deliveryDetails', {
+                    url: "/deliveryDetails",
+                    controller: 'DeliveryDetailsController',
+                    templateUrl: function () {
+                        return 'deliveryDetails.html';
+                    }
+                })
                 .state('projects', {
                     url: "/projects",
                     controller: 'ProjectsController',
