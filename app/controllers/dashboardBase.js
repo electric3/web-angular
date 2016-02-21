@@ -12,6 +12,12 @@ angular.module('myApp', ['googlechart', 'ui.router'])
                     templateUrl: function () {
                         return 'dashboard.html';
                     }
+                })
+                .state('deliveries', {
+                    url: "/deliveries",
+                    templateUrl: function () {
+                        return 'deliveries.html';
+                    }
                 });
         }])
     .controller('DashboardBaseController', ['$scope', '$state',
