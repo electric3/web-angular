@@ -20,6 +20,13 @@ angular.module('myApp', ['googlechart', 'ui.router'])
                     templateUrl: function () {
                         return 'dashboard.html';
                     }
+                })
+                .state('projects', {
+                    url: "/projects",
+                    controller: 'ProjectsController',
+                    templateUrl: function () {
+                        return 'dashboard.html';
+                    }
                 });
         }])
     .controller('DashboardBaseController', ['$scope', '$state',
