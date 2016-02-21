@@ -28,30 +28,13 @@ angular.module('myApp')
                             "type": "number",
                             "p": {}
                         },
-                        {
-                            "id": "desktop-id",
-                            "label": "Desktop",
-                            "type": "number",
-                            "p": {}
-                        },
-                        {
-                            "id": "server-id",
-                            "label": "Server",
-                            "type": "number",
-                            "p": {}
-                        },
-                        {
-                            "id": "cost-id",
-                            "label": "Shipping",
-                            "type": "number"
-                        }
                     ],
                     "rows": []
                 };
                 var slices = { };
                 var i = 0;
                 angular.forEach(departments, function (key) {
-                    data.rows.push({"c": [{"v": key.title}, {"v": 1}]});
+                    data.rows.push({"c": [{"v": key.title, "department_id": key._id}, {"v": 1, "department_id": key._id}]});
                     if( "0" == key.status ) {
                         slices[i++] = { "color": "red" };
                     } else if( "1" == key.status ) {
@@ -87,7 +70,6 @@ angular.module('myApp')
 
             $scope.selectHandler = function (selectedItem) {
                 console.log(selectedItem);
-                fillByDepartments("56c9ad7bc4fa907ce389a46d");
             }
         }
     ]);
