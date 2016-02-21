@@ -9,78 +9,22 @@
                 <h2 class="mdl-card__title-text" style="position: absolute; bottom: 0;">{{title}} Statistics</h2>
             </div>
         </div>
-        <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto">
+        <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto;">
             <div class="mdl-card__title">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-cell mdl-cell--12-col">
                         <h2 class="mdl-card__title-text">Feed</h2>
-                    </div>
-                    <div class="mdl-cell mdl-cell--2-col" style="margin-bottom: 20px">
-                        <img src="../assets/images/news.png" width="40px" height="40px">
                     </div>
                 </div>
             </div>
-            <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: scroll">
+            <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: auto">
                 <ul class="mdl-list">
-                    <li class="mdl-list__item mdl-list__item--three-line">
+                    <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="action in actions">
                                 <span class="mdl-list__item-primary-content">
                                   <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span>Bryan Cranston</span>
+                                  <span></span>
                                   <span class="mdl-list__item-text-body">
-                                    Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                    for playing Hal in Malcom in the Middle.
-                                  </span>
-                                </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                </span>
-                    </li>
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                                <span class="mdl-list__item-primary-content">
-                                  <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span>Bryan Cranston</span>
-                                  <span class="mdl-list__item-text-body">
-                                    Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                    for playing Hal in Malcom in the Middle.
-                                  </span>
-                                </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                </span>
-                    </li>
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                                <span class="mdl-list__item-primary-content">
-                                  <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span>Bryan Cranston</span>
-                                  <span class="mdl-list__item-text-body">
-                                    Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                    for playing Hal in Malcom in the Middle.
-                                  </span>
-                                </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                </span>
-                    </li>
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                                <span class="mdl-list__item-primary-content">
-                                  <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span>Bryan Cranston</span>
-                                  <span class="mdl-list__item-text-body">
-                                    Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                    for playing Hal in Malcom in the Middle.
-                                  </span>
-                                </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                </span>
-                    </li>
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                                <span class="mdl-list__item-primary-content">
-                                  <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span>Bryan Cranston</span>
-                                  <span class="mdl-list__item-text-body">
-                                    Bryan Cranston played the role of Walter in Breaking Bad. He is also known
-                                    for playing Hal in Malcom in the Middle.
+                                    {{action.actionStringRepresentation}}
                                   </span>
                                 </span>
                                 <span class="mdl-list__item-secondary-content">
@@ -106,7 +50,8 @@
             <div id="progressbar1" class="mdl-progress mdl-js-progress pt-dashboard_progress"></div>
             <span class="mdl-list__item-secondary-content">
                 <span class="mdl-list__item-secondary-action">
-                    <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction" ng-click="listBtnClicked()">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction"
+                            ng-click="listBtnClicked()">
                         Add
                     </button>
                 </span>

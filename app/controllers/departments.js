@@ -1,16 +1,16 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window', "$http", 'UsersService', '$state',
-        function ($scope, $window, $http, UsersService, $state) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http", '$stateParams', '$state',
+        function ($scope, $window, $http, $stateParams, $state) {
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
 
-            var currentUser = UsersService.getCurrentUser();
+            $scope.actions = [];
 
             $http({
                 method: 'GET',
-                url: 'http://169.45.106.72:8080/server/webapi/clients/' + currentUser.user_metadata.clientId + '/departments'
+                url: 'http://169.45.106.72:8080/server/webapi/clients/' + $stateParams.clientId + '/departments'
             }).then(function successCallback(response) {
 
                 var departments = angular.fromJson(response.data).items;
@@ -70,10 +70,9 @@ angular.module('myApp')
 
             $http({
                 method: "GET",
-                url: "http://169.45.106.72:8080/server/webapi/actions/client/" + currentUser.user_metadata.clientId
+                url: "http://169.45.106.72:8080/server/webapi/actions/client/" + $stateParams.clientId
             }).then(function successCallback(response) {
-                var feed = angular.fromJson(response.data).items;
-                console.log("xyi feed ", feed);
+                $scope.actions = angular.fromJson(response.data).items;
                 // to do fill
             }, function errorCallback(response) {
                 console.log("xyi error " + response);

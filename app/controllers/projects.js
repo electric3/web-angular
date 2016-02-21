@@ -7,6 +7,8 @@ angular.module('myApp')
             $scope.title = "Projects";
             $scope.listItems = [{title: '1'}];
 
+            $scope.actions = [];
+
             $http({
                 method: 'GET',
                 url: 'http://169.45.106.72:8080/server/webapi/departments/' + $stateParams.departmentId + '/projects'
@@ -73,9 +75,7 @@ angular.module('myApp')
                 method: "GET",
                 url: "http://169.45.106.72:8080/server/webapi/actions/department/" + $stateParams.departmentId
             }).then(function successCallback(response) {
-                var feed = angular.fromJson(response.data).items;
-                console.log("xyi feed ", feed);
-                // to do fill
+                $scope.actions = angular.fromJson(response.data).items;
             }, function errorCallback(response) {
                 console.log("xyi error " + response);
             });
