@@ -1,25 +1,30 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window',
-        function ($scope) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http",
+        function ($scope, $window, $http) {
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
 
-            $scope.chartObject = {
-                "type": "PieChart",
-                "displayed": false,
-                "data": {
+            $http({
+                method: 'GET',
+                url: 'http://169.45.106.72:8080/server/webapi/clients/' + '56c9ad7bc4fa907ce389a46d' + '/departments'
+            }).then(function successCallback(response) {
+
+                console.log("before", $scope.chartObject);
+
+                var departments = angular.fromJson(response.data).items;
+                var data = {
                     "cols": [
                         {
-                            "id": "month",
-                            "label": "Month",
+                            "id": "id-department",
+                            "label": "Department",
                             "type": "string",
                             "p": {}
                         },
                         {
-                            "id": "laptop-id",
-                            "label": "Laptop",
+                            "id": "id-number",
+                            "label": "Department",
                             "type": "number",
                             "p": {}
                         },
@@ -41,95 +46,42 @@ angular.module('myApp')
                             "type": "number"
                         }
                     ],
-                    "rows": [
-                        {
-                            "c": [
-                                {
-                                    "v": "January"
-                                },
-                                {
-                                    "v": 19,
-                                    "f": "42 items"
-                                },
-                                {
-                                    "v": 12,
-                                    "f": "Ony 12 items"
-                                },
-                                {
-                                    "v": 7,
-                                    "f": "7 servers"
-                                },
-                                {
-                                    "v": 4
-                                },
-                                null
-                            ]
+                    "rows": []
+                };
+                angular.forEach(departments, function (key) {
+                    data.rows.push({"c": [{"v": key.title}, {"v": 1}]});
+                });
+
+                console.log("after", data);
+
+                $scope.chartObject = {
+                    "type": "PieChart",
+                    "displayed": true,
+                    "data": data,
+                    "options": {
+                        "isStacked": "true",
+                        "fill": 30,
+                        pieSliceText: "label",
+                        "tooltip": {
+                            "isHtml": false,
+                            "trigger": "none"
                         },
-                        {
-                            "c": [
-                                {
-                                    "v": "February"
-                                },
-                                {
-                                    "v": 13
-                                },
-                                {
-                                    "v": 1,
-                                    "f": "1 unit (Out of stock this month)"
-                                },
-                                {
-                                    "v": 12
-                                },
-                                {
-                                    "v": 2
-                                },
-                                null
-                            ]
-                        },
-                        {
-                            "c": [
-                                {
-                                    "v": "March"
-                                },
-                                {
-                                    "v": 24
-                                },
-                                {
-                                    "v": 5
-                                },
-                                {
-                                    "v": 11
-                                },
-                                {
-                                    "v": 6
-                                },
-                                null
-                            ]
-                        }
-                    ]
-                },
-                "options": {
-                    "isStacked": "true",
-                    "fill": 20,
-                    "displayExactValues": true,
-                    "vAxis": {
-                        "title": "Sales unit",
-                        "gridlines": {
-                            "count": 10
+                        "slices": {
+                            0: {"color": "yellow"},
+                            1: {"color": "yellow"},
+                            2: {"color": "yellow"},
                         }
                     },
-                    "hAxis": {
-                        "title": "Date"
-                    },
-                    "tooltip": {
-                        "isHtml": false
-                    }
-                },
-                "formatters": {}
-            };
+                    "formatters": {}
+                };
+
+            }, function errorCallback(response) {
+                console.log("xyi error " + response);
+            });
 
             $scope.selectHandler = function (selectedItem) {
                 console.log(selectedItem);
+                fillByDepartments("56c9ad7bc4fa907ce389a46d");
             }
         }
     ]);
