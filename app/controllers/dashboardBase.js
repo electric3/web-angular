@@ -32,6 +32,9 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     controller: 'DeliveryDetailsController',
                     templateUrl: function () {
                         return 'deliveryDetails.html';
+                    },
+                    params: {
+                        'deliveryId': undefined
                     }
                 })
                 .state('projects', {
