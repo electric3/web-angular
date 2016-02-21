@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myApp')
-    .controller('DashboardController', ['$scope', '$window',
+    .controller('DepartmentsController', ['$scope', '$window',
         function ($scope) {
             $scope.chartObject = {
                 "type": "PieChart",

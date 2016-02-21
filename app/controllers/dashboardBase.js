@@ -9,14 +9,16 @@ angular.module('myApp', ['googlechart', 'ui.router'])
             $stateProvider
                 .state('departments', {
                     url: "/departments",
+                    controller: 'DepartmentsController',
                     templateUrl: function () {
                         return 'dashboard.html';
                     }
                 })
                 .state('deliveries', {
                     url: "/deliveries",
+                    controller: 'DeliveriesController',
                     templateUrl: function () {
-                        return 'deliveries.html';
+                        return 'dashboard.html';
                     }
                 });
         }])
