@@ -4,6 +4,10 @@ angular.module('myApp')
     .controller('ProjectsController', ['$scope', '$state', "$http", '$stateParams',
         function ($scope, $state, $http, $stateParams) {
 
+            if (!$stateParams.departmentId) {
+                $state.go('departments');
+            }
+
             $scope.title = "Projects";
             $scope.listItems = [{title: '1'}];
 

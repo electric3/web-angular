@@ -3,6 +3,11 @@
 angular.module('myApp')
     .controller('DeliveriesController', ['$scope', '$http', '$state', '$stateParams',
         function ($scope, $http, $state, $stateParams) {
+
+            if (!$stateParams.projectId) {
+                $state.go('projects');
+            }
+
             $scope.title = "Deliveries";
 
             $scope.listItems = [{title: '3'}];

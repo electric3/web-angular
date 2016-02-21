@@ -1,7 +1,17 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window', "$http", '$stateParams', '$state',
-        function ($scope, $window, $http, $stateParams, $state) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http", '$stateParams', '$state', 'UsersService',
+        function ($scope, $window, $http, $stateParams, $state, UsersService) {
+
+            if (!$stateParams.clientId) {
+                var currentUser = UsersService.getCurrentUser();
+                if ( currentUser != null ) {
+                    $stateParams.clientId = currentUser.user_metadata.clientId;
+                } else {
+                    $window.location.href = $window.location.origin;
+                }
+            }
+
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
