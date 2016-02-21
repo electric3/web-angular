@@ -70,5 +70,22 @@ angular.module('myApp')
             }, function errorCallback(response) {
                 console.log("xyi error " + response);
             });
+
+            $http({
+                method: "GET",
+                url: "http://169.45.106.72:8080/server/webapi/actions/department/" + currentUser.user_metadata.clientId
+            }).then(function successCallback(response) {
+                var feed = angular.fromJson(response.data).items;
+                console.log("xyi feed ", feed);
+                // to do fill
+            }, function errorCallback(response) {
+                console.log("xyi error " + response);
+            });
+
+            $scope.selectHandler = function (selectedItem) {
+                var selectedRow = selectedItem.row;
+                var departmentId = $scope.chartObject.data.rows[selectedRow].c[0].project_id;
+                console.log("selected project_id", departmentId);
+            }
         }
     ]);
