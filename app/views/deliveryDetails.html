@@ -3,30 +3,35 @@
         <div class="mdl-card mdl-shadow--3dp" style="width: 670px; height: 450px; margin: auto">
             <md-toolbar class="md-warn">
                 <div class="md-toolbar-tools">
-                    <h2 class="md-flex">Delivery details: {{title}}</h2>
+                    <img class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
+                    <h2 style="padding-left: 5px" class="md-flex">{{title}}</h2>
                     <md-input-container style="position: absolute; right: 0">
-                    <md-select ng-model="delivery.status">
-                        <md-option value="0">
-                            RED
-                        </md-option>
-                        <md-option value="1">
-                            Orange
-                        </md-option>
-                        <md-option value="2">
-                            Green
-                        </md-option>
-                    </md-select>
+                        <md-select ng-model="delivery.status">
+                            <md-option value="0">
+                                Red
+                            </md-option>
+                            <md-option value="1">
+                                Orange
+                            </md-option>
+                            <md-option value="2">
+                                Green
+                            </md-option>
+                        </md-select>
                     </md-input-container>
                 </div>
             </md-toolbar>
             <div class="mdl-card__supporting-text" style="overflow-y: auto">
+                <md-input-container class="md-block" flex-gt-xs="">
+                    <span class="md-body-1">Assignee: {{delivery.assignee.user_metadata.name}}</span>
+                </md-input-container>
                 <md-input-container class="md-block">
                     <div flex="10" layout="" layout-align="center center">
                         <span class="md-body-1">Progress</span>
                     </div>
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--8-col">
-                            <md-slider flex="" min="0" max="100" ng-model="delivery.progress" aria-label="red" id="red-slider"
+                            <md-slider flex="" min="0" max="100" ng-model="delivery.progress" aria-label="red"
+                                       id="red-slider"
                                        class="">
                             </md-slider>
                         </div>
@@ -39,11 +44,12 @@
                 <div layout-gt-xs="row">
                     <md-input-container class="md-block" flex-gt-xs="">
                         <label>Description</label>
-                            <textarea class="mdl-textfield__input" type="text" style="height: 100%;" ng-model="delivery.description"
-                                      placeholder="Description"></textarea>
+                            <textarea class="mdl-textfield__input" type="text" style="height: 100%;"
+                                      ng-model="delivery.description"
+                                      placeholder="Description" disabled></textarea>
                     </md-input-container>
 
-                    <md-datepicker ng-model="delivery.submissionDate" md-placeholder="Enter date">
+                    <md-datepicker ng-model="delivery.submissionDate" md-placeholder="Enter date" disabled>
                     </md-datepicker>
                 </div>
             </div>
@@ -58,8 +64,13 @@
                 <ul class="mdl-list">
                     <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="comment in comments">
                                 <span class="mdl-list__item-primary-content">
-                                  <i class="material-icons mdl-list__item-avatar">person</i>
-                                  <span></span>
+                                  <i class="material-icons mdl-list__item-avatar"
+                                     ng-if="!comment.author.user_metadata.photoUrl">
+                                      person
+                                  </i>
+                                    <img class="mdl-list__item-avatar" ng-if="comment.author.user_metadata.photoUrl"
+                                         ng-src="{{comment.author.user_metadata.photoUrl}}">
+                                  <span ng-if="comment.author">{{comment.author.user_metadata.name}}</span>
                                   <span class="mdl-list__item-text-body">
                                     {{comment.comment}}
                                   </span>
@@ -70,7 +81,8 @@
             <div class="mdl-card__actions mdl-card--border">
                 <div class="mdl-grid" style="">
                     <div class="mdl-cell mdl-cell--10-col">
-                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;" ng-model="comment.comment"
+                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;"
+                                  ng-model="comment.comment"
                                   placeholder="Comment"></textarea>
                     </div>
                     <div class="mdl-cell mdl-cell--2-col">
