@@ -24,7 +24,7 @@ angular.module('myApp')
                 "skypeName": "hej.ivan",
                 "phone": "+79817727449",
                 "name": "Ivan Alyakskin",
-                "clientId": "56ca635abd49800ea1b30255",
+                "clientId": client,
                 "role": "0"
             }
         };
@@ -50,7 +50,7 @@ angular.module('myApp')
                 "skypeName": "casper1149",
                 "phone": "+79219262241",
                 "name": "Stas Smirnov",
-                "clientId": "56ca635abd49800ea1b30255",
+                "clientId": client,
                 "role": "1"
             }
         };
@@ -76,7 +76,7 @@ angular.module('myApp')
                 "skypeName": "zzzlayaspb",
                 "phone": "+79211234567",
                 "name": "Tatiana Trubitcyna",
-                "clientId": "56ca635abd49800ea1b30255",
+                "clientId": client,
                 "role": "2"
             }
         };
