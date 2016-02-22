@@ -39,6 +39,7 @@ angular.module('myApp')
                     data: $scope.comment,
                     url: "http://169.45.106.72:8080/server/webapi/deliveries/" + $scope.delivery._id + '/comment'
                 }).then(function successCallback(response) {
+                    $scope.comments.length = 0;
                     loadComments();
                 }, function errorCallback(response) {
                     console.log(response);
@@ -48,6 +49,22 @@ angular.module('myApp')
             $scope.backBtnClicked = function () {
                 $state.go($stateParams.origin, { 'departmentId': $stateParams.departmentId, 'projectId': $stateParams.projectId });
             };
+
+            $scope.deliveryStatusChanged = function (newStatus) {
+                $http({
+                    method: "GET",
+                    url: "http://169.45.106.72:8080/server/webapi/deliveries/" + $scope.delivery._id + '/setStatus/' + newStatus
+                }).then(function successCallback(response) {
+                    $scope.comments.length = 0;
+                    loadComments();
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+            }
+
+            $scope.sliderValueChanged = function (newProgress) {
+                console.log(newProgress);
+            }
 
             loadComments();
         }

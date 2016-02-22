@@ -9,7 +9,7 @@
                     <img class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
                     <h2 style="padding-left: 5px" class="md-flex">{{title}}</h2>
                     <md-input-container style="position: absolute; right: 0">
-                        <md-select ng-model="delivery.status">
+                        <md-select ng-model="delivery.status" ng-change="deliveryStatusChanged(delivery.status)">
                             <md-option value="0">
                                 Red
                             </md-option>
@@ -34,7 +34,7 @@
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--8-col">
                             <md-slider flex="" min="0" max="100" ng-model="delivery.progress" aria-label="red"
-                                       id="red-slider"
+                                       id="red-slider" ng-change="sliderValueChanged(delivery.progress)"
                                        class="">
                             </md-slider>
                         </div>
