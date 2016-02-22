@@ -1,8 +1,13 @@
 <div class="mdl-layout__content">
     <div class="pt-landing_cards-wrapper">
         <div class="mdl-card mdl-shadow--3dp" style="width: 670px; height: 450px; margin: auto">
+            <div class="mdl-card__title" ng-if="showBackIcon">
+                <i class="material-icons" style="position: absolute; left: 0; top: 0; z-index: 1;" ng-click="backBtnClicked()">
+                    arrow_back
+                </i>
+            </div>
             <div class="mdl-card__title">
-                <div google-chart chart="chartObject" style="height:600px; width:100%;"
+                <div google-chart chart="chartObject" style="height:650px; width:100%;"
                      agc-on-select="selectHandler(selectedItem)"></div>
             </div>
             <div class="mdl-card__supporting-text">

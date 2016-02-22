@@ -12,6 +12,8 @@ angular.module('myApp')
                 }
             }
 
+            $scope.showBackIcon = false;
+
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
