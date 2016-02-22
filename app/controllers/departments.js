@@ -75,7 +75,7 @@ angular.module('myApp')
                 };
 
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $http({
@@ -85,7 +85,7 @@ angular.module('myApp')
                 $scope.actions = angular.fromJson(response.data).items;
                 // to do fill
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $scope.selectHandler = function (selectedItem) {
