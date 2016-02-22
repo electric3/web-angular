@@ -1,23 +1,27 @@
-<div class="mdl-layout__content">
+<div class="mdl-layout__content pt-dashboard-item_content">
+    <div style="margin:0 0 0 16px;">
+        <h4>Projects Progress</h4>
+    </div>
     <ul class="mdl-list" style="width: 100%">
         <li class="mdl-list__item mdl-list__item--three-line pt-dashboard_progress-wrapper"
             ng-repeat="project in projects">
             <span class="mdl-list__item-primary-content">
                 <span>{{project.title}}</span>
                 <span class="mdl-list__item-text-body">
-                    details
+                    {{project.description}}
                 </span>
+                <md-progress-linear md-mode="determinate" ng-class="{ 'md-warn': project.status == '0', 'md-primary': project.status == '1' , 'md-accent': project.status == '2'}" value="{{project.progress}}" style="position: absolute; left: 0; bottom: 0"></md-progress-linear>
             </span>
-
-            <div id="progressbar1" class="mdl-progress mdl-js-progress pt-dashboard_progress"></div>
             <span class="mdl-list__item-secondary-content">
                 <span class="mdl-list__item-secondary-action">
                     <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction"
                             ng-click="showProjectDetails(project)">
-                        Details
+                        See details
                     </button>
                 </span>
             </span>
         </li>
     </ul>
+
+    <span>{{project}}</span>
 </div>
