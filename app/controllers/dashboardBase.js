@@ -1,8 +1,12 @@
 'use strict';
 
 angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-storage'])
-    .config(['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
+        function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+
+          $mdThemingProvider.theme('default')
+            .primaryPalette('cyan')
+            .accentPalette('orange');
 
             $urlRouterProvider.otherwise("#/");
 

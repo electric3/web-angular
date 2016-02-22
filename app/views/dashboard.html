@@ -1,4 +1,4 @@
-<div class="mdl-layout__content">
+<div class="mdl-layout__content pt-dashboard-item_content">
     <div class="pt-landing_cards-wrapper">
         <div class="mdl-card mdl-shadow--3dp" style="width: 670px; height: 450px; margin: auto">
             <div class="mdl-card__title" ng-if="showBackIcon">
@@ -15,24 +15,51 @@
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto;">
-            <md-toolbar class="md-warn">
+            <md-toolbar class="md-accent">
                 <div class="md-toolbar-tools">
-                    <h2 class="md-flex">Actions</h2>
+                    <h2 class="md-flex">Pulse</h2>
                 </div>
             </md-toolbar>
             <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: auto">
                 <ul class="mdl-list">
                     <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="action in actions">
-                                <span class="mdl-list__item-primary-content">
+                        <span class="mdl-list__item-primary-content">
                                   <i class="material-icons mdl-list__item-avatar">person</i>
                                   <span></span>
-                                  <span class="mdl-list__item-text-body">
+                        <span class="mdl-list__item-text-body">
                                     {{action.actionStringRepresentation}}
                                   </span>
-                                </span>
+                        </span>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+<div class="mdl-layout__content pt-dashboard-item_content">
+    <div class="pt-landing_cards-wrapper">
+        <ul class="mdl-list" style="width: 100%">
+            <li class="mdl-list__item mdl-list__item--three-line pt-dashboard_progress-wrapper" ng-repeat="listItem in listItems">
+                <span class="mdl-list__item-primary-content">
+                <span>{{listItem.title}}</span>
+                <span class="mdl-list__item-text-body">
+                    details
+                </span>
+                </span>
+                <div id="progressbar1" class="mdl-progress mdl-js-progress pt-dashboard_progress"></div>
+                <span class="mdl-list__item-secondary-content">
+                <span class="mdl-list__item-secondary-action">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" id="btnAction"
+                            ng-click="listBtnClicked()">
+                        Add
+                    </button>
+                </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+>>>>>>> origin/master
