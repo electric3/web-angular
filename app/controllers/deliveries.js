@@ -93,7 +93,8 @@ angular.module('myApp')
             }
 
             $scope.backBtnClicked = function () {
-                $state.go('projects', { 'departmentId': $stateParams.departmentId });
+                var state = $stateParams.origin ? $stateParams.origin : 'projects';
+                $state.go(state, { 'departmentId': $stateParams.departmentId });
             };
 
             $scope.listBtnClicked = function () {

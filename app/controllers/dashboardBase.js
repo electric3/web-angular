@@ -28,6 +28,7 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                         return 'dashboard.html';
                     },
                     params: {
+                        'origin': undefined,
                         'projectId': undefined,
                         'departmentId': undefined
                     }
@@ -50,6 +51,13 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                     controller: 'DeliveriesListController',
                     templateUrl: function () {
                         return 'deliveriesList.html';
+                    }
+                })
+                .state('projectsList', {
+                    url: "/projectsList",
+                    controller: 'DeliveriesListController',
+                    templateUrl: function () {
+                        return 'projectsList.html';
                     }
                 })
                 .state('projects', {
