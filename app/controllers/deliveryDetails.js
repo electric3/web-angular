@@ -12,8 +12,6 @@ angular.module('myApp')
 
             $scope.title = $scope.delivery.title;
 
-            $scope.listItems = [{title: '4'}];
-
             $scope.comments = [];
 
             $scope.comment = {
