@@ -9,7 +9,6 @@ angular.module('myApp')
             }
 
             $scope.title = "Projects";
-            $scope.listItems = [{title: '1'}];
 
             $scope.actions = [];
 

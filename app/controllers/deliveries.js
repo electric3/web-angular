@@ -10,8 +10,6 @@ angular.module('myApp')
 
             $scope.title = "Deliveries";
 
-            $scope.listItems = [{title: '3'}];
-
             $scope.actions = [];
 
             $http({
