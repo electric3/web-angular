@@ -1,7 +1,17 @@
 'use strict';
 angular.module('myApp')
-    .controller('DepartmentsController', ['$scope', '$window', "$http", '$stateParams', '$state',
-        function ($scope, $window, $http, $stateParams, $state) {
+    .controller('DepartmentsController', ['$scope', '$window', "$http", '$stateParams', '$state', 'UsersService',
+        function ($scope, $window, $http, $stateParams, $state, UsersService) {
+
+            if (!$stateParams.clientId) {
+                var currentUser = UsersService.getCurrentUser();
+                if ( currentUser != null ) {
+                    $stateParams.clientId = currentUser.user_metadata.clientId;
+                } else {
+                    $window.location.href = $window.location.origin;
+                }
+            }
+
             $scope.title = "Departments";
 
             $scope.listItems = [{title: '2'}];
@@ -65,7 +75,7 @@ angular.module('myApp')
                 };
 
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $http({
@@ -73,9 +83,8 @@ angular.module('myApp')
                 url: "http://169.45.106.72:8080/server/webapi/actions/client/" + $stateParams.clientId
             }).then(function successCallback(response) {
                 $scope.actions = angular.fromJson(response.data).items;
-                // to do fill
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $scope.selectHandler = function (selectedItem) {

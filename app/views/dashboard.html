@@ -10,13 +10,11 @@
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto;">
-            <div class="mdl-card__title">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col">
-                        <h2 class="mdl-card__title-text">Feed</h2>
-                    </div>
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">Actions</h2>
                 </div>
-            </div>
+            </md-toolbar>
             <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: auto">
                 <ul class="mdl-list">
                     <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="action in actions">
@@ -26,9 +24,6 @@
                                   <span class="mdl-list__item-text-body">
                                     {{action.actionStringRepresentation}}
                                   </span>
-                                </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
                                 </span>
                     </li>
                 </ul>

@@ -5,8 +5,8 @@
                 <div class="md-toolbar-tools">
                     <h2 class="md-flex">Delivery details: {{title}}</h2>
                     <md-input-container style="position: absolute; right: 0">
-                    <md-select ng-model="status">
-                        <md-option value="0" selected>
+                    <md-select ng-model="delivery.status">
+                        <md-option value="0">
                             RED
                         </md-option>
                         <md-option value="1">
@@ -26,32 +26,34 @@
                     </div>
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--8-col">
-                            <md-slider flex="" min="0" max="100" ng-model="color.red" aria-label="red" id="red-slider"
+                            <md-slider flex="" min="0" max="100" ng-model="delivery.progress" aria-label="red" id="red-slider"
                                        class="">
                             </md-slider>
                         </div>
                         <div class="mdl-cell mdl-cell--4-col">
-                            <input flex="" type="number" ng-model="color.red" aria-label="red"
-                                   aria-controls="red-slider">
+                            <input flex="" type="number" ng-model="delivery.progress" aria-label="red"
+                                   aria-controls="red-slider" disabled>
                         </div>
                     </div>
                 </md-input-container>
                 <div layout-gt-xs="row">
                     <md-input-container class="md-block" flex-gt-xs="">
                         <label>Description</label>
-                            <textarea class="mdl-textfield__input" type="text" style="height: 100%;"
+                            <textarea class="mdl-textfield__input" type="text" style="height: 100%;" ng-model="delivery.description"
                                       placeholder="Description"></textarea>
                     </md-input-container>
 
-                    <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
+                    <md-datepicker ng-model="delivery.submissionDate" md-placeholder="Enter date">
                     </md-datepicker>
                 </div>
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto">
-            <div class="mdl-card__title">
-                Comments
-            </div>
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">Comments</h2>
+                </div>
+            </md-toolbar>
             <div class="mdl-card__supporting-text" style="margin-top: -30px; overflow: auto">
                 <ul class="mdl-list">
                     <li class="mdl-list__item mdl-list__item--three-line" ng-repeat="comment in comments">
@@ -62,20 +64,17 @@
                                     {{comment.comment}}
                                   </span>
                                 </span>
-                                <span class="mdl-list__item-secondary-content">
-                                  <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-                                </span>
                     </li>
                 </ul>
             </div>
             <div class="mdl-card__actions mdl-card--border">
                 <div class="mdl-grid" style="">
                     <div class="mdl-cell mdl-cell--10-col">
-                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;"
+                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;" ng-model="comment.comment"
                                   placeholder="Comment"></textarea>
                     </div>
                     <div class="mdl-cell mdl-cell--2-col">
-                        <button class="mdl-button mdl-js-button">Send</button>
+                        <button class="mdl-button mdl-js-button" ng-click="addCommentClicked()">Send</button>
                     </div>
                 </div>
             </div>

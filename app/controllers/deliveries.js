@@ -3,9 +3,16 @@
 angular.module('myApp')
     .controller('DeliveriesController', ['$scope', '$http', '$state', '$stateParams',
         function ($scope, $http, $state, $stateParams) {
+
+            if (!$stateParams.projectId) {
+                $state.go('projects');
+            }
+
             $scope.title = "Deliveries";
 
             $scope.listItems = [{title: '3'}];
+
+            $scope.actions = [];
 
             $http({
                 method: 'GET',
@@ -14,7 +21,7 @@ angular.module('myApp')
 
                 console.log("before", $scope.chartObject);
 
-                var departments = angular.fromJson(response.data).items;
+                var deliveries = angular.fromJson(response.data).items;
                 var data = {
                     "cols": [
                         {
@@ -34,16 +41,16 @@ angular.module('myApp')
                 };
                 var slices = { };
                 var i = 0;
-                angular.forEach(departments, function (key) {
+                angular.forEach(deliveries, function (key) {
                     data.rows.push({"c": [{"v": key.title, "delivery": key}, {"v": 1, "delivery": key}]});
-                    if( "0" == key.status ) {
+                    if( "0" === key.status ) {
                         slices[i++] = { "color": "red" };
-                    } else if( "1" == key.status ) {
+                    } else if( "1" === key.status ) {
                         slices[i++] = { "color": "orange" };
-                    } else if( "2" == key.status ) {
+                    } else if( "2" === key.status ) {
                         slices[i++] = { "color": "green" };
                     }
-
+                    console.log(key.status);
                 });
 
                 console.log("after", data);
@@ -66,18 +73,16 @@ angular.module('myApp')
                 };
 
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $http({
                 method: "GET",
                 url: "http://169.45.106.72:8080/server/webapi/actions/project/" + $stateParams.projectId
             }).then(function successCallback(response) {
-                var feed = angular.fromJson(response.data).items;
-                console.log("xyi feed ", feed);
-                // to do fill
+                $scope.actions = angular.fromJson(response.data).items;
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log(response);
             });
 
             $scope.selectHandler = function (selectedItem) {
@@ -85,7 +90,6 @@ angular.module('myApp')
                 var delivery = $scope.chartObject.data.rows[selectedRow].c[0].delivery;
                 console.log("selected delivery ", delivery);
                 $state.go('deliveryDetails', { 'delivery': delivery });
-                $state.go('projects', { 'departmentId': departmentId });
             }
 
             $scope.listBtnClicked = function () {

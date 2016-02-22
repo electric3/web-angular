@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('DeliveryDetailsController', ['$scope', '$http', '$stateParams',
-        function ($scope, $http, $stateParams) {
-            console.log("xyi details", $stateParams.delivery);
+    .controller('DeliveryDetailsController', ['$scope', '$http', '$stateParams', '$state', 'UsersService',
+        function ($scope, $http, $stateParams, $state, UsersService) {
+
+            if (!$stateParams.delivery) {
+                $state.go('deliveries');
+            }
 
             $scope.delivery = $stateParams.delivery;
 
@@ -13,14 +16,35 @@ angular.module('myApp')
 
             $scope.comments = [];
 
-            $http({
-                method: "GET",
-                url: "http://169.45.106.72:8080/server/webapi/deliveries/" + $scope.delivery._id + '/comments'
-            }).then(function successCallback(response) {
-                $scope.comments = angular.fromJson(response.data).items;
-                // to do fill
-            }, function errorCallback(response) {
-                console.log(response);
-            });
+            $scope.comment = {
+                "comment": '',
+                "author": UsersService.getCurrentUser()
+            };
+
+            var loadComments = function () {
+                $http({
+                    method: "GET",
+                    url: "http://169.45.106.72:8080/server/webapi/deliveries/" + $scope.delivery._id + '/comments'
+                }).then(function successCallback(response) {
+                    $scope.comments = angular.fromJson(response.data).items;
+                    // to do fill
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+            };
+
+            $scope.addCommentClicked = function () {
+                $http({
+                    method: "POST",
+                    data: $scope.comment,
+                    url: "http://169.45.106.72:8080/server/webapi/deliveries/" + $scope.delivery._id + '/comment'
+                }).then(function successCallback(response) {
+                    loadComments();
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+            };
+
+            loadComments();
         }
     ]);

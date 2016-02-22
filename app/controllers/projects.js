@@ -4,6 +4,10 @@ angular.module('myApp')
     .controller('ProjectsController', ['$scope', '$state', "$http", '$stateParams',
         function ($scope, $state, $http, $stateParams) {
 
+            if (!$stateParams.departmentId) {
+                $state.go('departments');
+            }
+
             $scope.title = "Projects";
             $scope.listItems = [{title: '1'}];
 
@@ -16,7 +20,7 @@ angular.module('myApp')
 
                 console.log("before", $scope.chartObject);
 
-                var departments = angular.fromJson(response.data).items;
+                var projects = angular.fromJson(response.data).items;
                 var data = {
                     "cols": [
                         {
@@ -36,7 +40,7 @@ angular.module('myApp')
                 };
                 var slices = { };
                 var i = 0;
-                angular.forEach(departments, function (key) {
+                angular.forEach(projects, function (key) {
                     data.rows.push({"c": [{"v": key.title, "project_id": key._id}, {"v": 1, "project_id": key._id}]});
                     if( "0" == key.status ) {
                         slices[i++] = { "color": "red" };
@@ -68,7 +72,7 @@ angular.module('myApp')
                 };
 
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $http({
@@ -77,7 +81,7 @@ angular.module('myApp')
             }).then(function successCallback(response) {
                 $scope.actions = angular.fromJson(response.data).items;
             }, function errorCallback(response) {
-                console.log("xyi error " + response);
+                console.log("error " + response);
             });
 
             $scope.selectHandler = function (selectedItem) {
