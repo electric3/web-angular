@@ -8,7 +8,10 @@ angular.module('myApp')
                 $state.go('deliveries');
             }
 
-            $scope.delivery = $stateParams.delivery;
+            $scope.delivery = angular.copy($stateParams.delivery);
+            if ( $scope.delivery.deadline && $scope.delivery.deadline > 0) {
+                $scope.delivery.deadline = new Date($scope.delivery.deadline * 1000);
+            }
 
             $scope.title = $scope.delivery.title;
 
