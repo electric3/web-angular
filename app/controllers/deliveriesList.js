@@ -11,6 +11,7 @@ angular.module('myApp')
                 url: "http://169.45.106.72:8080/server/webapi/deliveries/user/" + UsersService.getCurrentUser().user_id
             }).then(function successCallback(response) {
                 $scope.deliveries = angular.fromJson(response.data).items;
+                console.log($scope.deliveries.length);
             }, function errorCallback(response) {
                 console.log(response);
             });

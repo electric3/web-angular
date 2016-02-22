@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-    .controller('DeliveriesListController', ['$scope', '$http', '$stateParams', '$state', 'UsersService',
+    .controller('ProjectsListController', ['$scope', '$http', '$stateParams', '$state', 'UsersService',
         function ($scope, $http, $stateParams, $state, UsersService) {
 
             $scope.projects = [];

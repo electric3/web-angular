@@ -55,7 +55,7 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                 })
                 .state('projectsList', {
                     url: "/projectsList",
-                    controller: 'DeliveriesListController',
+                    controller: 'ProjectsListController',
                     templateUrl: function () {
                         return 'projectsList.html';
                     }
