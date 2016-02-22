@@ -1,14 +1,14 @@
 <div class="mdl-layout__content pt-dashboard-item_content">
     <div class="pt-landing_cards-wrapper">
         <div class="mdl-card mdl-shadow--3dp" style="width: 670px; height: 450px; margin: auto">
-            <md-toolbar class="md-warn">
+            <md-toolbar class="md-primary">
                 <div class="md-toolbar-tools">
-                    <i class="material-icons" ng-click="backBtnClicked()">
-                        arrow_back
-                    </i>
-                    <img class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
+                    <button ng-click="backBtnClicked()" style="margin: 0 16px 0 0;" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                        <i class="material-icons">arrow_back</i>
+                    </button>
+                    <img style="margin: 0 16px 0 0;" class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
                     <h2 style="padding-left: 5px" class="md-flex">{{title}}</h2>
-                    <md-input-container style="position: absolute; right: 0">
+                    <md-input-container style="position: absolute; right: 16px; top: 0;">
                         <md-select ng-model="delivery.status" ng-change="deliveryStatusChanged(delivery.status)">
                             <md-option value="0">
                                 Red
@@ -33,8 +33,7 @@
                     </div>
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--8-col">
-                            <md-slider flex="" min="0" max="100" ng-model="delivery.progress" aria-label="red"
-                                       id="red-slider" ng-change="sliderValueChanged(delivery.progress)"
+                            <md-slider flex="" min="0" max="100" ng-class="{ 'md-warn': delivery.status == '0', 'md-accent': delivery.status == '1' , 'md-primary': delivery.status == '2'}" ng-model="delivery.progress" aria-label="red" id="red-slider" ng-change="sliderValueChanged(delivery.progress)"
                                        class="">
                             </md-slider>
                         </div>
@@ -58,7 +57,7 @@
             </div>
         </div>
         <div class="mdl-card mdl-shadow--3dp" style="width: 470px; height: 450px; margin: auto">
-            <md-toolbar class="md-warn">
+            <md-toolbar class="md-accent">
                 <div class="md-toolbar-tools">
                     <h2 class="md-flex">Comments</h2>
                 </div>
