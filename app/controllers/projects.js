@@ -88,7 +88,11 @@ angular.module('myApp')
                 var selectedRow = selectedItem.row;
                 var projectId = $scope.chartObject.data.rows[selectedRow].c[0].project_id;
                 console.log("selected project_id", projectId);
-                $state.go('deliveries', { 'projectId': projectId });
+                $state.go('deliveries', { 'projectId': projectId, 'departmentId': $stateParams.departmentId });
             }
+
+            $scope.backBtnClicked = function () {
+                $state.go('departments');
+            };
         }
     ]);

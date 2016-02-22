@@ -45,6 +45,10 @@ angular.module('myApp')
                 });
             };
 
+            $scope.backBtnClicked = function () {
+                $state.go('deliveries', { 'departmentId': $stateParams.departmentId, 'projectId': $stateParams.projectId });
+            };
+
             loadComments();
         }
     ]);

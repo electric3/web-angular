@@ -89,8 +89,12 @@ angular.module('myApp')
                 var selectedRow = selectedItem.row;
                 var delivery = $scope.chartObject.data.rows[selectedRow].c[0].delivery;
                 console.log("selected delivery ", delivery);
-                $state.go('deliveryDetails', { 'delivery': delivery });
+                $state.go('deliveryDetails', { 'delivery': delivery, 'projectId': $stateParams.projectId, 'departmentId': $stateParams.departmentId });
             }
+
+            $scope.backBtnClicked = function () {
+                $state.go('projects', { 'departmentId': $stateParams.departmentId });
+            };
 
             $scope.listBtnClicked = function () {
                 //$state.go('deliveryDetails');

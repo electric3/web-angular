@@ -28,7 +28,8 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                         return 'dashboard.html';
                     },
                     params: {
-                        'projectId': undefined
+                        'projectId': undefined,
+                        'departmentId': undefined
                     }
                 })
                 .state('deliveryDetails', {
@@ -38,7 +39,9 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
                         return 'deliveryDetails.html';
                     },
                     params: {
-                        'delivery': undefined
+                        'delivery': undefined,
+                        'projectId': undefined,
+                        'departmentId': undefined
                     }
                 })
                 .state('projects', {
@@ -61,6 +64,8 @@ angular.module('myApp', ['googlechart', 'ui.router', 'ngMaterial', 'angular-stor
             };
 
             var currentUser = UsersService.getCurrentUser();
+
+            $scope.showBackIcon = true;
 
             $state.go('departments', { 'clientId': currentUser.user_metadata.clientId });
         }

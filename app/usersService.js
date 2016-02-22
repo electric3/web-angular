@@ -3,7 +3,7 @@
 angular.module('myApp')
     .service('UsersService', ['store', function (store) {
 
-        var client = "56ca65eebd49801008230e06";
+        var client = "56ca719fbd49801307544ff7";
 
         this.ceo = {
             "email": "ivan@handyassist.com",
