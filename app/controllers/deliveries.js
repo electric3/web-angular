@@ -12,6 +12,8 @@ angular.module('myApp')
 
             $scope.listItems = [{title: '3'}];
 
+            $scope.actions = [];
+
             $http({
                 method: 'GET',
                 url: 'http://169.45.106.72:8080/server/webapi/projects/' + $stateParams.projectId + '/deliveries'
@@ -78,8 +80,7 @@ angular.module('myApp')
                 method: "GET",
                 url: "http://169.45.106.72:8080/server/webapi/actions/project/" + $stateParams.projectId
             }).then(function successCallback(response) {
-                var feed = angular.fromJson(response.data).items;
-                // to do fill
+                $scope.actions = angular.fromJson(response.data).items;
             }, function errorCallback(response) {
                 console.log(response);
             });

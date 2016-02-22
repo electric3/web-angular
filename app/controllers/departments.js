@@ -83,7 +83,6 @@ angular.module('myApp')
                 url: "http://169.45.106.72:8080/server/webapi/actions/client/" + $stateParams.clientId
             }).then(function successCallback(response) {
                 $scope.actions = angular.fromJson(response.data).items;
-                // to do fill
             }, function errorCallback(response) {
                 console.log("error " + response);
             });
