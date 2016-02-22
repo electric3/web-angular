@@ -6,7 +6,7 @@
                     <i class="material-icons" ng-click="backBtnClicked()">
                         arrow_back
                     </i>
-                    <img style="padding-left: 5px" class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
+                    <img class="mdl-list__item-avatar" ng-src="{{delivery.assignee.user_metadata.photoUrl}}" width="36px" height="36px"/>
                     <h2 style="padding-left: 5px" class="md-flex">{{title}}</h2>
                     <md-input-container style="position: absolute; right: 0">
                         <md-select ng-model="delivery.status">
