@@ -71,11 +71,11 @@
             <div class="mdl-card__actions mdl-card--border">
                 <div class="mdl-grid" style="">
                     <div class="mdl-cell mdl-cell--10-col">
-                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;"
+                        <textarea class="mdl-textfield__input" type="text" rows="2" style="width: 100%;" ng-model="comment.comment"
                                   placeholder="Comment"></textarea>
                     </div>
                     <div class="mdl-cell mdl-cell--2-col">
-                        <button class="mdl-button mdl-js-button">Send</button>
+                        <button class="mdl-button mdl-js-button" ng-click="addCommentClicked()">Send</button>
                     </div>
                 </div>
             </div>
