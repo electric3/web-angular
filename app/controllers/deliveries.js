@@ -50,10 +50,7 @@ angular.module('myApp')
                     } else if( "2" === key.status ) {
                         slices[i++] = { "color": "green" };
                     }
-                    console.log(key.status);
                 });
-
-                console.log("after", data);
 
                 $scope.chartObject = {
                     "type": "PieChart",
